@@ -1,7 +1,8 @@
+
 import React from 'react';
 import { 
   BarChart, PieChart, BarChart3, Wallet, LineChart, Globe, 
-  DollarSign, Settings, ChevronRight, ChevronLeft, Home, User
+  DollarSign, Settings, ChevronRight, ChevronLeft, Home
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
@@ -28,11 +29,6 @@ export function Sidebar({ isCollapsed, onToggle, className }: SidebarProps) {
       title: 'Dashboard',
       icon: Home,
       href: '/dashboard',
-    },
-    {
-      title: 'About',
-      icon: User,
-      href: '/about',
     },
     {
       title: 'Stocks',
