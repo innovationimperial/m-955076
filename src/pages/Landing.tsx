@@ -167,6 +167,13 @@ export default function Landing() {
                 Watch Demo
               </Button>
             </div>
+            
+            {/* Innovation Imperial Product Tag */}
+            <div className="mt-6 animate-slide-up" style={{animationDelay: '0.6s'}}>
+              <p className="text-sm text-[#C0C0C0] font-light">
+                An Innovation Imperial Product
+              </p>
+            </div>
           </div>
         </div>
 
@@ -476,10 +483,19 @@ export default function Landing() {
           </div>
 
           <div className="border-t border-[#C0C0C0]/20 mt-12 pt-8 text-center">
-            <p className="text-[#C0C0C0]">
+            <p className="text-[#C0C0C0] mb-4">
               © 2024 Imperial Axis. All rights reserved. | 
               <span className="text-[#00FF88] ml-2">Markets are open</span>
             </p>
+            
+            {/* Innovation Imperial Tag */}
+            <div className="inline-block">
+              <img 
+                src="/lovable-uploads/b1047f6d-7896-45ed-8ecf-3a4678a42398.png" 
+                alt="Created and Powered by Innovation Imperial"
+                className="h-8 mx-auto"
+              />
+            </div>
           </div>
         </div>
       </footer>
