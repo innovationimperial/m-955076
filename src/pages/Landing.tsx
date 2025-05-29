@@ -1,6 +1,5 @@
-
 import React, { useState, useEffect } from 'react';
-import { ArrowRight, Play, Shield, TrendingUp, Brain, Smartphone, BarChart3, Users } from 'lucide-react';
+import { ArrowRight, Play, Shield, TrendingUp, Brain, Smartphone, BarChart3, Users, ChevronDown, ChevronUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -14,6 +13,7 @@ export default function Landing() {
     volumeTraded: 50.2,
     uptime: 99.9
   });
+  const [expandedBios, setExpandedBios] = useState<{[key: string]: boolean}>({});
 
   const testimonials = [
     {
@@ -78,6 +78,30 @@ export default function Landing() {
     }
   ];
 
+  const teamMembers = [
+    {
+      id: "tonderai",
+      name: "Tonderai Dzwimbu",
+      title: "CFO",
+      image: "/lovable-uploads/a03f640a-a566-4f37-a384-fa89813b543a.png",
+      bio: "Tonderai Dzwimbu is a qualified Chartered Accountant [CA (Z)] with over four years of experience in accounting and assurance. He possesses strong management skills and extensive knowledge of various accounting, assurance, and related service frameworks. Tonderai is proficient in a range of computer and web-based programs commonly used in the accounting and audit field, including SAP, QuickBooks, and Oracle. His professional experience spans multiple countries—Zimbabwe, Namibia, and South Africa—where he has served renowned and sizeable clients across diverse industries such as insurance, manufacturing, mining, and software as a service (SaaS)."
+    },
+    {
+      id: "mcmarsh",
+      name: "McMarsh Dzwimbu",
+      title: "COO and Co-Founder",
+      image: "/lovable-uploads/8244bf68-193c-4350-9b61-65e484e0e12d.png",
+      bio: "McMarsh Dzwimbu is an operations expert specializing in business process optimization and team management. He holds a distinction honors Degree in data science and Artificial Intelligence He currently serves as a Full Stack AI Engineer and App Developer at Innovation Imperial, where he has led and contributed to numerous projects involving live AI applications. McMarsh specializes in building AI agents, automations, and scalable web applications tailored for business and industrial use cases. His technical expertise spans the MERN stack for web development, as well as Python, Pydantic, n8n, LangChain, LangGraph, and various AI frameworks used in intelligent system development. In his current role, McMarsh designs, plans, and builds practical AI-driven solutions for businesses of all sizes looking to meaningfully integrate AI into their operations. He also collaborates with business buyers and sellers to develop ERP, accounting, HR, and other enterprise systems that enhance the functionality and value of their software infrastructure."
+    },
+    {
+      id: "ntsane",
+      name: "Ntsane Foulo",
+      title: "CEO & Co-Founder",
+      image: "/lovable-uploads/ba8549af-89a6-42c8-b7d6-12be1d18019c.png",
+      bio: "Ntsane Foulo is a tech visionary with extensive experience in software development and business strategy. Holding a degree in computer science and various industry certificates and a seasoned Full Stack Engineer, he brings deep expertise in application development, with a strong focus on AI-powered solutions that drive business transformation and innovation. Ntsane is highly proficient in both frontend and backend development, and has built a wide array of intelligent applications across various industries. He is an expert in a broad range of AI frameworks and automation platforms, including n8n, LangChain, LangGraph, TensorFlow, PyTorch, Hugging Face Transformers, and OpenAI's API stack, among others. His ability to combine technical depth with strategic insight allows him to create solutions that are not only technically sound but also strategically aligned with business objectives."
+    }
+  ];
+
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
@@ -98,6 +122,13 @@ export default function Landing() {
 
   const handleGetStarted = () => {
     window.location.href = '/stocks';
+  };
+
+  const toggleBio = (memberId: string) => {
+    setExpandedBios(prev => ({
+      ...prev,
+      [memberId]: !prev[memberId]
+    }));
   };
 
   return (
@@ -435,6 +466,66 @@ export default function Landing() {
                 </Button>
               </CardContent>
             </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Our Team Section */}
+      <section id="team" className="py-20 bg-[#1A1A1A]">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-white to-[#C0C0C0] bg-clip-text text-transparent">
+              Meet Our Team
+            </h2>
+            <p className="text-xl text-[#C0C0C0] max-w-2xl mx-auto">
+              The visionaries behind Imperial Axis
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {teamMembers.map((member) => (
+              <Card 
+                key={member.id} 
+                className="bg-[#0A0A0A] border-[#C0C0C0]/20 hover:border-[#C0C0C0]/40 transition-all duration-300 hover:scale-105 group"
+              >
+                <CardContent className="p-6 text-center">
+                  <div className="mb-6">
+                    <img 
+                      src={member.image} 
+                      alt={member.name}
+                      className="w-32 h-32 rounded-full mx-auto border-4 border-[#C0C0C0]/30 group-hover:border-[#C0C0C0]/60 transition-all duration-300 object-cover"
+                    />
+                  </div>
+                  
+                  <h3 className="text-xl font-bold text-white mb-2">{member.name}</h3>
+                  <p className="text-[#C0C0C0] font-semibold mb-4">{member.title}</p>
+                  
+                  <div className="text-left">
+                    <p className="text-[#C0C0C0] text-sm leading-relaxed">
+                      {expandedBios[member.id] 
+                        ? member.bio
+                        : `${member.bio.substring(0, 150)}...`
+                      }
+                    </p>
+                    
+                    <button
+                      onClick={() => toggleBio(member.id)}
+                      className="mt-3 flex items-center text-[#C0C0C0] hover:text-white transition-colors text-sm font-medium"
+                    >
+                      {expandedBios[member.id] ? (
+                        <>
+                          Show Less <ChevronUp className="ml-1 w-4 h-4" />
+                        </>
+                      ) : (
+                        <>
+                          Read More <ChevronDown className="ml-1 w-4 h-4" />
+                        </>
+                      )}
+                    </button>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
