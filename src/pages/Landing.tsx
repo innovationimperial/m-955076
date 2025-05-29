@@ -135,10 +135,16 @@ export default function Landing() {
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0A0A0A] via-[#1A1A1A] to-[#0A0A0A]" />
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0 bg-[linear-gradient(45deg,#C0C0C0_1px,transparent_1px),linear-gradient(-45deg,#C0C0C0_1px,transparent_1px)] bg-[size:20px_20px]" />
-        </div>
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: "url('/lovable-uploads/ff15a05f-cc71-4f51-bc6d-ce224ee93d51.png')"
+          }}
+        />
+        
+        {/* Dark overlay to ensure text readability */}
+        <div className="absolute inset-0 bg-black/60" />
         
         <div className="container mx-auto px-6 z-10">
           <div className="text-center max-w-4xl mx-auto">
@@ -179,7 +185,7 @@ export default function Landing() {
 
         {/* Floating Dashboard Preview */}
         <div className="absolute right-10 top-1/2 transform -translate-y-1/2 hidden xl:block animate-float">
-          <div className="bg-[#1A1A1A] border border-[#C0C0C0]/20 rounded-lg p-4 w-80 backdrop-blur-lg">
+          <div className="bg-[#1A1A1A]/80 border border-[#C0C0C0]/20 rounded-lg p-4 w-80 backdrop-blur-lg">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-sm font-semibold text-[#C0C0C0]">Live Dashboard</h3>
               <div className="w-2 h-2 bg-[#00FF88] rounded-full animate-pulse" />
