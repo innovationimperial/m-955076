@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, Play, Shield, TrendingUp, Brain, Smartphone, BarChart3, Users, ChevronDown, ChevronUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -83,7 +84,7 @@ export default function Landing() {
       id: "tonderai",
       name: "Tonderai Dzwimbu",
       title: "CFO",
-      image: "/lovable-uploads/a03f640a-a566-4f37-a384-fa89813b543a.png",
+      image: "/lovable-uploads/82fbcd9e-0b32-44a7-8b66-adaa726c1bda.png",
       bio: "Tonderai Dzwimbu is a qualified Chartered Accountant [CA (Z)] with over four years of experience in accounting and assurance. He possesses strong management skills and extensive knowledge of various accounting, assurance, and related service frameworks. Tonderai is proficient in a range of computer and web-based programs commonly used in the accounting and audit field, including SAP, QuickBooks, and Oracle. His professional experience spans multiple countries—Zimbabwe, Namibia, and South Africa—where he has served renowned and sizeable clients across diverse industries such as insurance, manufacturing, mining, and software as a service (SaaS)."
     },
     {
