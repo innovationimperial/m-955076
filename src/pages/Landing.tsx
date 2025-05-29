@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, Play, Shield, TrendingUp, Brain, Smartphone, BarChart3, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -119,8 +118,15 @@ export default function Landing() {
               <a href="#platform" className="text-[#C0C0C0] hover:text-white transition-colors">Platform</a>
               <a href="#features" className="text-[#C0C0C0] hover:text-white transition-colors">Features</a>
               <a href="#pricing" className="text-[#C0C0C0] hover:text-white transition-colors">Pricing</a>
-              <a href="#about" className="text-[#C0C0C0] hover:text-white transition-colors">About</a>
-              <a href="#contact" className="text-[#C0C0C0] hover:text-white transition-colors">Contact</a>
+              <a href="/about" className="text-[#C0C0C0] hover:text-white transition-colors">About</a>
+              <a 
+                href="https://innovationimperial.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-[#C0C0C0] hover:text-white transition-colors"
+              >
+                Innovation Imperial
+              </a>
             </div>
             
             <Button 
