@@ -1,6 +1,5 @@
-
 import React, { useState, useEffect } from 'react';
-import { ArrowRight, Play, Shield, TrendingUp, Brain, Smartphone, BarChart3, Users, ChevronDown, ChevronUp } from 'lucide-react';
+import { ArrowRight, Play, Shield, TrendingUp, Brain, Smartphone, BarChart3, Users, ChevronDown, ChevronUp, MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -98,7 +97,7 @@ export default function Landing() {
       id: "ntsane",
       name: "Ntsane Foulo",
       title: "CEO & Co-Founder",
-      image: "/lovable-uploads/ba8549af-89a6-42c8-b7d6-12be1d18019c.png",
+      image: "/lovable-uploads/9e036a07-effb-44b3-9ce2-c76a75731adf.png",
       bio: "Ntsane Foulo is a tech visionary with extensive experience in software development and business strategy. Holding a degree in computer science and various industry certificates and a seasoned Full Stack Engineer, he brings deep expertise in application development, with a strong focus on AI-powered solutions that drive business transformation and innovation. Ntsane is highly proficient in both frontend and backend development, and has built a wide array of intelligent applications across various industries. He is an expert in a broad range of AI frameworks and automation platforms, including n8n, LangChain, LangGraph, TensorFlow, PyTorch, Hugging Face Transformers, and OpenAI's API stack, among others. His ability to combine technical depth with strategic insight allows him to create solutions that are not only technically sound but also strategically aligned with business objectives."
     }
   ];
@@ -130,6 +129,13 @@ export default function Landing() {
       ...prev,
       [memberId]: !prev[memberId]
     }));
+  };
+
+  const handleWhatsAppClick = () => {
+    const phoneNumber = "27697906374";
+    const message = "Hi! I'm interested in Imperial Axis trading platform.";
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
   };
 
   return (
@@ -530,6 +536,17 @@ export default function Landing() {
           </div>
         </div>
       </section>
+
+      {/* Floating WhatsApp Button */}
+      <div className="fixed bottom-6 right-6 z-50">
+        <Button
+          onClick={handleWhatsAppClick}
+          className="bg-[#25D366] hover:bg-[#25D366]/90 text-white rounded-full w-14 h-14 p-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110"
+          aria-label="Contact us on WhatsApp"
+        >
+          <MessageCircle className="w-6 h-6" />
+        </Button>
+      </div>
 
       {/* Footer */}
       <footer className="bg-[#1A1A1A] border-t border-[#C0C0C0]/20 py-16">
