@@ -28,7 +28,7 @@ export function Sidebar({ isCollapsed, onToggle, className }: SidebarProps) {
     {
       title: 'Dashboard',
       icon: Home,
-      href: '/',
+      href: '/dashboard',
     },
     {
       title: 'Stocks',
@@ -83,7 +83,7 @@ export function Sidebar({ isCollapsed, onToggle, className }: SidebarProps) {
           "font-semibold tracking-tight transition-opacity duration-200",
           isCollapsed ? "opacity-0" : "opacity-100"
         )}>
-          MarketPulse
+          Imperial Axis
         </h2>
         
         <Button
