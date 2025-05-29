@@ -91,7 +91,7 @@ export default function Landing() {
       id: "mcmarsh",
       name: "McMarsh Dzwimbu",
       title: "COO and Co-Founder",
-      image: "/lovable-uploads/8244bf68-193c-4350-9b61-65e484e0e12d.png",
+      image: "/lovable-uploads/3c47af11-7f88-47b0-9588-448936217d9c.png",
       bio: "McMarsh Dzwimbu is an operations expert specializing in business process optimization and team management. He holds a distinction honors Degree in data science and Artificial Intelligence He currently serves as a Full Stack AI Engineer and App Developer at Innovation Imperial, where he has led and contributed to numerous projects involving live AI applications. McMarsh specializes in building AI agents, automations, and scalable web applications tailored for business and industrial use cases. His technical expertise spans the MERN stack for web development, as well as Python, Pydantic, n8n, LangChain, LangGraph, and various AI frameworks used in intelligent system development. In his current role, McMarsh designs, plans, and builds practical AI-driven solutions for businesses of all sizes looking to meaningfully integrate AI into their operations. He also collaborates with business buyers and sellers to develop ERP, accounting, HR, and other enterprise systems that enhance the functionality and value of their software infrastructure."
     },
     {
