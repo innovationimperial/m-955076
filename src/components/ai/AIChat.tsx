@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -59,24 +58,37 @@ export function AIChat() {
     };
     setMessages(prev => [...prev, thinkingMessage]);
 
+    console.log('Sending message to webhook:', userMessage.content);
+    
     try {
-      const response = await fetch('https://n8n-kh3f.onrender.com/webhook/358150cc-ecba-45d1-ae96-e22ea2946364', {
+      const webhookUrl = 'https://n8n-kh3f.onrender.com/webhook/358150cc-ecba-45d1-ae96-e22ea2946364';
+      console.log('Webhook URL:', webhookUrl);
+
+      const payload = {
+        message: userMessage.content,
+        timestamp: userMessage.timestamp.toISOString(),
+        userId: 'user-' + Date.now(),
+      };
+      
+      console.log('Sending payload:', payload);
+
+      const response = await fetch(webhookUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          message: userMessage.content,
-          timestamp: userMessage.timestamp.toISOString(),
-          userId: 'user-' + Date.now(),
-        }),
+        body: JSON.stringify(payload),
       });
 
+      console.log('Response status:', response.status);
+      console.log('Response ok:', response.ok);
+
       if (!response.ok) {
-        throw new Error('Failed to send message');
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
 
       const data = await response.json();
+      console.log('Response data:', data);
       
       // Remove thinking message and add AI response
       setMessages(prev => {
@@ -90,7 +102,7 @@ export function AIChat() {
       });
 
     } catch (error) {
-      console.error('Error sending message:', error);
+      console.error('Error sending message to webhook:', error);
       
       // Remove thinking message and add error response
       setMessages(prev => {
@@ -103,7 +115,7 @@ export function AIChat() {
         }];
       });
 
-      toast.error('Failed to send message. Please try again.');
+      toast.error('Failed to send message. Please check your connection and try again.');
     } finally {
       setIsLoading(false);
     }
