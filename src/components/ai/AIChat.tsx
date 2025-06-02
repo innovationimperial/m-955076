@@ -61,7 +61,7 @@ export function AIChat() {
     console.log('Sending message to webhook:', userMessage.content);
     
     try {
-      const webhookUrl = 'https://n8n-kh3f.onrender.com/webhook/358150cc-ecba-45d1-ae96-e22ea2946364';
+      const webhookUrl = 'https://n8n-kh3f.onrender.com/webhook-test/358150cc-ecba-45d1-ae96-e22ea2946364';
       console.log('Webhook URL:', webhookUrl);
 
       const payload = {
