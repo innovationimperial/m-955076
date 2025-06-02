@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, useEffect } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -87,15 +88,33 @@ export function AIChat() {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      const data = await response.json();
-      console.log('Response data:', data);
+      // Check if response has content
+      const responseText = await response.text();
+      console.log('Response text:', responseText);
+      
+      let aiResponse = 'I received your message and I\'m processing it. Thank you for reaching out!';
+      
+      // Try to parse as JSON if there's content
+      if (responseText.trim()) {
+        try {
+          const data = JSON.parse(responseText);
+          console.log('Parsed response data:', data);
+          aiResponse = data.response || data.message || data.reply || aiResponse;
+        } catch (parseError) {
+          console.log('Response is not JSON, using as plain text:', responseText);
+          // If it's not JSON, use the text directly (if it's meaningful)
+          if (responseText.length > 0 && responseText.length < 1000) {
+            aiResponse = responseText;
+          }
+        }
+      }
       
       // Remove thinking message and add AI response
       setMessages(prev => {
         const withoutThinking = prev.filter(msg => !msg.content.includes('thinking'));
         return [...withoutThinking, {
           id: Date.now().toString(),
-          content: data.response || 'I received your message and I\'m processing it. Thank you for reaching out!',
+          content: aiResponse,
           isUser: false,
           timestamp: new Date(),
         }];
